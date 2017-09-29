@@ -33,3 +33,19 @@ get('/stores/:id') do
   @store = Store.find(params[:id].to_i)
   erb(:store)
 end
+
+get('/stores/:id/edit') do
+  @section = 'stores'
+  @store = Store.find(params[:id].to_i)
+  erb(:store_edit)
+end
+
+patch('/stores/:id') do
+  @section = 'stores'
+  @store = Store.find(params[:id].to_i)
+  if @store.update({name: params['name']})
+    redirect '/stores/' + @store.id.to_s
+  else
+    erb(:store_edit)
+  end
+end
