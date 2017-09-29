@@ -40,6 +40,13 @@ describe 'the store CRUD path', { type: :feature } do
     click_button('Create Store')
     expect(page).to have_content('Name has already been taken')
   end
+
+  it "does not allow store names longer than 100 characters" do
+    visit('/stores')
+    fill_in('name', with: ('Shoes' * 50))
+    click_button('Create Store')
+    expect(page).to have_content('Name is too long (maximum is 100 characters)')
+  end
 end
 
 describe 'the brand creation path', { type: :feature} do
