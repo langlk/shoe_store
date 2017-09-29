@@ -60,3 +60,9 @@ delete('/stores/:id') do
     erb(:errors)
   end
 end
+
+get('/brands') do
+  @section = 'brands'
+  @brands = Brand.all
+  erb(:brands)
+end
