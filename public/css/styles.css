@@ -1,4 +1,5 @@
 html {
+  background-color: #36505b;
   background: url(../img/bg.jpeg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -17,7 +18,7 @@ h1, h2, h3, h4 {
 }
 
 .jumbotron {
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   background: rgba(250, 250, 255, 0.70);
   background: -webkit-linear-gradient(left, rgba(250, 250, 255, 0.88), rgba(250, 250, 255, 0.21));
   background: -o-linear-gradient(right, rgba(250, 250, 255, 0.88), rgba(250, 250, 255, 0.21));
@@ -30,8 +31,8 @@ h1, h2, h3, h4 {
 }
 
 .container.contents {
-  width: 90%;
-  margin: 5vw auto;
+  width: 94%;
+  margin: 3vw auto;
   padding: 30px 40px 40px;
   border-radius: 6px;
   background: rgba(250, 250, 255, 0.70);
