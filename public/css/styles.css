@@ -64,11 +64,7 @@ a:hover, .brand-remove .btn:hover {
   margin-left: .6em;
 }
 
-.intro {
-  margin-top: 20px;
-}
-
-.object-list {
+.intro, .empty-list, .object-list {
   margin-top: 20px;
 }
 
