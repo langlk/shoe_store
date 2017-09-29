@@ -15,6 +15,11 @@ describe('Brand') do
       expect(brand2.save).to eq(false)
     end
 
+    it "does not allow brand name of more than 100 characters" do
+      brand = Brand.new({name: 'Sh' + ('o' * 100) + 'es'})
+      expect(brand.save).to eq(false)
+    end
+
     it "capitalizes brand name before saving" do
       brand = Brand.new({name: 'converse ALLstar'})
       brand.save
