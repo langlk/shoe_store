@@ -66,3 +66,16 @@ describe 'the brand creation path', { type: :feature} do
     expect(page).to have_content("Name has already been taken.")
   end
 end
+
+describe 'the store-brand association', { type: :feature } do
+  it "lets user add brands to a store" do
+    store = Store.create({name: 'Northgate'})
+    brand_1 = Brand.create({name: 'Converse', price: 40.0})
+    brand_2 = Brand.create({name: 'Vans', price: 45.0})
+    visit('/stores/' + store.id.to_s)
+    check('brand-' + brand_1.id.to_s)
+    check('brand-' + brand_2.id.to_s)
+    click_button('Add Brands')
+    expect(store.brands).to eq([brand_1, brand_2])
+  end
+end

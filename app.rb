@@ -31,6 +31,7 @@ end
 get('/stores/:id') do
   @section = 'stores'
   @store = Store.find(params[:id].to_i)
+  @brands = Brand.all
   erb(:store)
 end
 
@@ -61,6 +62,18 @@ delete('/stores/:id') do
   end
 end
 
+patch('/stores/:id/add-brands') do
+  @section = 'stores'
+  @store = Store.find(params[:id].to_i)
+  brand_ids = @store.brand_ids + params['brand_ids'].map { |id| id.to_i }
+  if @store.update({brand_ids: brand_ids})
+    redirect '/stores/' + @store.id.to_s
+  else
+    @problem_object = @store
+    erb(:errors)
+  end
+end
+
 get('/brands') do
   @section = 'brands'
   @brands = Brand.all
@@ -69,7 +82,7 @@ end
 
 post('/brands/add') do
   @section = 'brands'
-  @brand = Brand.new({name: params['name'], price: params['price']})
+  @brand = Brand.new({name: params['name'], price: params['price'].to_f})
   if @brand.save
     redirect '/brands'
   else
