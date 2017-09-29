@@ -101,4 +101,15 @@ describe 'the store-brand association', { type: :feature } do
     visit('/stores/' + store.id.to_s)
     expect(page).to have_no_content('Add Brands to Store Converse')
   end
+
+  it "allows user to remove brands from a store, adding them back to the available-to-add list" do
+    store = Store.create({name: 'Northgate'})
+    brand_1 = Brand.create({name: 'Converse', price: 40.0})
+    brand_2 = Brand.create({name: 'Vans', price: 45.0})
+    store.update({brand_ids: [brand_1.id]})
+    visit('/stores/' + store.id.to_s)
+    click_button('Remove')
+    expect(page).to have_no_content('Brands Stocked Converse')
+    expect(page).to have_content('Converse')
+  end
 end

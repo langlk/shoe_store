@@ -7,7 +7,13 @@
 <% if @store.brands.any? %>
   <ul>
     <% @store.brands.each do |brand| %>
-      <li><%= brand.name %> - <%= brand.price %></li>
+      <li>
+        <%= brand.name %> - <%= brand.price %>
+        <form class="" action="/stores/<%= @store.id %>/remove-brand/<%= brand.id %>" method="post">
+          <input type="hidden" name="_method" value="patch">
+          <button type="submit" class="btn">Remove</button>
+        </form>
+      </li>
     <% end %>
   </ul>
 <% else %>

@@ -74,6 +74,18 @@ patch('/stores/:id/add-brands') do
   end
 end
 
+patch('/stores/:store_id/remove-brand/:brand_id') do
+  @section = 'stores'
+  @store = Store.find(params[:store_id].to_i)
+  brand_ids = @store.brand_ids - [params[:brand_id].to_i]
+  if @store.update({brand_ids: brand_ids})
+    redirect '/stores/' + @store.id.to_s
+  else
+    @problem_object = @store
+    erb(:errors)
+  end
+end
+
 get('/brands') do
   @section = 'brands'
   @brands = Brand.all
