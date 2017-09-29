@@ -12,9 +12,18 @@
 
 <h3>Add a Store</h3>
 <form class="" action="/stores/add" method="post">
-  <div class="form-group">
+  <div class="form-group <%= @store != nil ? 'has-error' : nil %>">
     <label for="name" class="control-label">Store Name</label>
     <input type="text" name="name" class="form-control">
   </div>
+
+  <% if @store %>
+    <div class="alert alert-danger">
+      <% @store.errors.full_messages.each do |message| %>
+        <%= message + " " %>
+      <% end %>
+    </div>
+  <% end %>
+
   <button type="submit" class="btn">Create Store</button>
 </form>

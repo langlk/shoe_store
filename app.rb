@@ -23,6 +23,7 @@ post('/stores/add') do
   if @store.save
     redirect '/stores/' + @store.id.to_s
   else
+    @stores = Store.all
     erb(:stores)
   end
 end
