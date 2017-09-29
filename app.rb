@@ -66,3 +66,14 @@ get('/brands') do
   @brands = Brand.all
   erb(:brands)
 end
+
+post('/brands/add') do
+  @section = 'brands'
+  @brand = Brand.new({name: params['name'], price: params['price']})
+  if @brand.save
+    redirect '/brands'
+  else
+    @brands = Brand.all
+    erb(:brands)
+  end
+end

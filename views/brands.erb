@@ -12,13 +12,23 @@
 
 <h3>Add a Brand</h3>
 <form class="" action="/brands/add" method="post">
-  <div class="form-group">
+  <div class="form-group <%= @brand != nil ? 'has-error' : nil %>">
     <label for="name" class="control-label">Brand Name</label>
     <input type="text" name="name" class="form-control">
   </div>
+
   <div class="form-group">
     <label for="price" class="control-label">Price (USD)</label>
     <input type="number" name="price" class="form-control" step="0.01" min="0.00" placeholder="0.00">
   </div>
+
+  <% if @brand %>
+    <div class="alert alert-danger">
+      <% @brand.errors.full_messages.each do |message| %>
+        <%= message + ". " %>
+      <% end %>
+    </div>
+  <% end %>
+
   <button type="submit" class="btn">Add Brand</button>
 </form>
