@@ -4,6 +4,11 @@ require 'spec_helper'
 
 describe('Store') do
   describe '#save' do
+    it "does not allow name to be blank" do
+      store = Store.new({name: ''})
+      expect(store.save).to eq(false)
+    end
+
     it "capitalizes store name before saving" do
       store = Store.new({name: 'northGate'})
       store.save
