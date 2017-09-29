@@ -1,6 +1,15 @@
+html {
+  background: url(../img/bg.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
+  background-color: transparent;
 }
 
 h1, h2, h3, h4 {
@@ -9,14 +18,27 @@ h1, h2, h3, h4 {
 
 .jumbotron {
   padding-bottom: 1rem;
+  background: rgba(250, 250, 255, 0.70);
+  background: -webkit-linear-gradient(left, rgba(250, 250, 255, 0.88), rgba(250, 250, 255, 0.21));
+  background: -o-linear-gradient(right, rgba(250, 250, 255, 0.88), rgba(250, 250, 255, 0.21));
+  background: -moz-linear-gradient(right, rgba(250, 250, 255, 0.88), rgba(250, 250, 255, 0.21));
+  background: linear-gradient(to right, rgba(250, 250, 255, 0.88), rgba(250, 250, 255, 0.21));
 }
 
 .jumbotron h1 {
   margin-bottom: 2rem;
 }
 
+.container.contents {
+  width: 90%;
+  margin: 5vw auto;
+  padding: 30px 40px 40px;
+  border-radius: 6px;
+  background: rgba(250, 250, 255, 0.70);
+}
+
 .subpage-header {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(25, 25, 25, 0.4);
 }
 
 .subpage-header h2 {
@@ -27,6 +49,10 @@ h1, h2, h3, h4 {
 .subpage-header h5 {
   display: inline-block;
   margin-left: .6em;
+}
+
+.intro {
+  margin-top: 20px;
 }
 
 .object-list {
@@ -50,4 +76,14 @@ h1, h2, h3, h4 {
 .brand-remove .btn:hover {
   color: #235784;
   text-decoration: underline;
+}
+
+@media screen and (max-width: 640px) {
+  .jumbotron {
+    background: rgba(250, 250, 255, 0.70);
+    background: -webkit-linear-gradient(left, rgba(250, 250, 255, 0.88), rgba(250, 250, 255, 0.40));
+    background: -o-linear-gradient(right, rgba(250, 250, 255, 0.88), rgba(250, 250, 255, 0.40));
+    background: -moz-linear-gradient(right, rgba(250, 250, 255, 0.88), rgba(250, 250, 255, 0.40));
+    background: linear-gradient(to right, rgba(250, 250, 255, 0.88), rgba(250, 250, 255, 0.40));
+  }
 }
