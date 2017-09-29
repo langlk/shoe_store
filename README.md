@@ -11,8 +11,20 @@ _A Ruby Web App for managing a shoe store. A user can save stores and brands, an
 ## Setup/Installation Requirements
 
 * Clone this repository
+* To set up the development database, run the following commands in the project's root directory:
+  * ```bundle install```
+  * ```rake db:create```
+  * ```rake db:environment:set```
+  * ```rake db:migrate```
+* After the development database is set up, run ```ruby app.rb``` in the project's root directory
+* Open ```localhost:4567``` in your web browser
 
 ## Specifications
+
+* Store names must be unique, non-empty, and 100 characters maximum.
+* Brand names must be unique, non-empty, and 100 characters maximum.
+* Stores can stock many brands, and brands can be stocked by many stores.
+* A brand's price will default to $0.00 if it is not provided.
 
 ## Support and contact details
 
