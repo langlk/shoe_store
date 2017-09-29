@@ -1,0 +1,17 @@
+<h2><%= @store.name %></h2>
+
+<h5><a href="/stores/<%= @store.id %>/edit">Edit</a></h5>
+
+<h3>Brands Stocked</h3>
+
+<% if @store.brands.any? %>
+  <ul>
+    <% @store.brands.each do |brand| %>
+      <li><a href="/brands/<%= brand.id %>"><%= brand.name %> - <%= brand.price %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No brands added to this store yet!</p>
+<% end %>
+
+<h4>Add Brands to Store</h4>
