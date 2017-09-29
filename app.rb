@@ -49,3 +49,14 @@ patch('/stores/:id') do
     erb(:store_edit)
   end
 end
+
+delete('/stores/:id') do
+  @section = 'stores'
+  @store = Store.find(params[:id].to_i)
+  if @store.delete
+    redirect '/stores'
+  else
+    @problem_object = @store
+    erb(:errors)
+  end
+end

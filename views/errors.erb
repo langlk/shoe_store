@@ -1,0 +1,9 @@
+<h2>Something has gone wrong!</h2>
+
+<% if @problem_object.errors.any? %>
+  <ul>
+    <% @problem_object.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
