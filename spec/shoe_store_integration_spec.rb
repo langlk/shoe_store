@@ -78,4 +78,13 @@ describe 'the store-brand association', { type: :feature } do
     click_button('Add Brands')
     expect(store.brands).to eq([brand_1, brand_2])
   end
+
+  it "removes brands from the add brands section when they've been assigned to the store" do
+    store = Store.create({name: 'Northgate'})
+    brand_1 = Brand.create({name: 'Converse', price: 40.0})
+    brand_2 = Brand.create({name: 'Vans', price: 45.0})
+    store.update({brand_ids: [brand_1.id]})
+    visit('/stores/' + store.id.to_s)
+    expect(page).to have_no_content('Add Brands to Store Converse')
+  end
 end

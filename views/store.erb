@@ -16,10 +16,10 @@
 
 <h4>Add Brands to Store</h4>
 
-<% if @brands.any? %>
+<% if @unassigned_brands.any? %>
   <form class="" action="/stores/<%= @store.id %>/add-brands" method="post">
     <input type="hidden" name="_method" value="patch">
-    <% @brands.each do |brand| %>
+    <% @unassigned_brands.each do |brand| %>
       <div class="checkbox">
         <label>
           <input id='brand-<%= brand.id %>' type="checkbox" name="brand_ids[]" value="<%= brand.id %>">

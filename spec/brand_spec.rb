@@ -41,11 +41,4 @@ describe('Brand') do
       expect(brand.stores).to eq([store1, store2])
     end
   end
-
-  # describe '#price_string' do
-  #   it "returns the price formatted as a US dollar amount" do
-  #     brand = Brand.create({name: 'Converse', price: 50})
-  #     expect(brand.price_string).to(eq('$50.00'))
-  #   end
-  # end
 end

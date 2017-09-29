@@ -31,7 +31,7 @@ end
 get('/stores/:id') do
   @section = 'stores'
   @store = Store.find(params[:id].to_i)
-  @brands = Brand.all
+  @unassigned_brands = Brand.all - @store.brands
   erb(:store)
 end
 
