@@ -72,6 +72,13 @@ describe 'the brand creation path', { type: :feature} do
     click_button('Add Brand')
     expect(page).to have_content("Name has already been taken.")
   end
+
+  it "does not allow brand names longer than 100 characters" do
+    visit('/brands')
+    fill_in('name', with: ('Shoes' * 50))
+    click_button('Add Brand')
+    expect(page).to have_content('Name is too long (maximum is 100 characters)')
+  end
 end
 
 describe 'the store-brand association', { type: :feature } do
