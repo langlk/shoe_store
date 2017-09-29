@@ -3,6 +3,13 @@
 require 'spec_helper'
 
 describe('Brand') do
+  describe '#save' do
+    it "capitalizes brand name before saving" do
+      brand = Brand.new({name: 'converse ALLstar'})
+      brand.save
+      expect(brand.name).to eq('Converse Allstar')
+    end
+  end
   describe '#stores' do
     it "returns a list of all stores that carry a brand" do
       brand = Brand.create({name: 'Converse'})
