@@ -4,6 +4,10 @@ class Brand < ActiveRecord::Base
   has_and_belongs_to_many :stores
   before_save :capitalize_name
 
+  def price_string
+    '$%.2f' % self.price
+  end
+
 private
   def capitalize_name
     self.name = self.name.capitalize.split.reduce { |full_name, word| full_name + " " + word.capitalize }

@@ -10,7 +10,7 @@ describe('Store') do
       expect(store.name).to eq('Northgate')
     end
   end
-  
+
   describe '#brands' do
     it "returns all brands that a store carries" do
       store = Store.create({name: 'Westlake'})

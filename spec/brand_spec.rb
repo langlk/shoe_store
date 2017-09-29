@@ -10,12 +10,20 @@ describe('Brand') do
       expect(brand.name).to eq('Converse Allstar')
     end
   end
+
   describe '#stores' do
     it "returns a list of all stores that carry a brand" do
       brand = Brand.create({name: 'Converse'})
       store1 = brand.stores.new({name: 'Northgate'})
       store2 = brand.stores.new({name: 'Westlake'})
       expect(brand.stores).to eq([store1, store2])
+    end
+  end
+
+  describe '#price_string' do
+    it "returns the price formatted as a US dollar amount" do
+      brand = Brand.create({name: 'Converse', price: 50})
+      expect(brand.price_string).to(eq('$50.00'))
     end
   end
 end
