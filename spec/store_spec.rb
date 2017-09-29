@@ -15,6 +15,11 @@ describe('Store') do
       expect(store2.save).to eq(false)
     end
 
+    it "requires store names to be a maximum of 100 characters" do
+      store = Store.new({name: 'Shoes' * 50})
+      expect(store.save).to eq(false)
+    end
+
     it "capitalizes store name before saving" do
       store = Store.new({name: 'northGate'})
       store.save
