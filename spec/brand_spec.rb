@@ -4,6 +4,11 @@ require 'spec_helper'
 
 describe('Brand') do
   describe '#save' do
+    it "does not allow name to be blank" do
+      brand = Brand.new(name: '')
+      expect(brand.save).to eq(false)  
+    end
+
     it "capitalizes brand name before saving" do
       brand = Brand.new({name: 'converse ALLstar'})
       brand.save
