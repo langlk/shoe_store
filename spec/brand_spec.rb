@@ -25,6 +25,12 @@ describe('Brand') do
       brand.save
       expect(brand.name).to eq('Converse Allstar')
     end
+
+    it "converts price to USD formatted string before saving" do
+      brand = Brand.new({name: 'Converse', price: 50})
+      brand.save
+      expect(brand.price).to eq('$50.00')
+    end
   end
 
   describe '#stores' do
@@ -36,10 +42,10 @@ describe('Brand') do
     end
   end
 
-  describe '#price_string' do
-    it "returns the price formatted as a US dollar amount" do
-      brand = Brand.create({name: 'Converse', price: 50})
-      expect(brand.price_string).to(eq('$50.00'))
-    end
-  end
+  # describe '#price_string' do
+  #   it "returns the price formatted as a US dollar amount" do
+  #     brand = Brand.create({name: 'Converse', price: 50})
+  #     expect(brand.price_string).to(eq('$50.00'))
+  #   end
+  # end
 end
