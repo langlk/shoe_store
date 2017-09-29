@@ -11,6 +11,7 @@ _A Ruby Web App for managing a shoe store. A user can save stores and brands, an
 ## Setup/Installation Requirements
 
 * Clone this repository
+* Ensure you have Postgres installed and running ([instructions here](https://www.learnhowtoprogram.com/ruby/ruby-database-basics/installing-postgres-7fb0cff7-a0f5-4b61-a0db-8a928b9f67ef))
 * To set up the development database, run the following commands in the project's root directory:
   * ```bundle install```
   * ```rake db:create```
