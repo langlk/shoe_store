@@ -32,3 +32,22 @@ h1, h2, h3, h4 {
 .object-list {
   margin-top: 20px;
 }
+
+.brand-remove {
+  display: inline;
+}
+
+.brand-remove .btn {
+  display: inline;
+  width: fit-content;
+  padding: 0px;
+  height: 24px;
+  vertical-align: top;
+  background-color: transparent;
+  color: #337ab7;
+}
+
+.brand-remove .btn:hover {
+  color: #235784;
+  text-decoration: underline;
+}

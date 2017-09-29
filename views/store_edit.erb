@@ -1,24 +1,36 @@
-<h2>Edit Store</h2>
+<div class="subpage-header">
+  <h2>Edit or Remove Store</h2>
+</div>
 
-<form class="" action="/stores/<%= @store.id %>" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <div class="form-group <%= @store.errors.any? ? 'has-error' : nil %>">
-    <label for="name" class="control-label">Store Name</label>
-    <input type="text" name="name" class="form-control" value="<%= @store.name %>">
+<div class="row">
+  <div class="col-sm-6">
+    <h3>Edit Store</h3>
+
+    <form class="" action="/stores/<%= @store.id %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <div class="form-group <%= @store.errors.any? ? 'has-error' : nil %>">
+        <label for="name" class="control-label">Store Name</label>
+        <input type="text" name="name" class="form-control" value="<%= @store.name %>">
+      </div>
+
+      <% if @store.errors.any? %>
+        <div class="alert alert-danger">
+          <% @store.errors.full_messages.each do |message| %>
+            <%= message + " " %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <button type="submit" class="btn btn-primary">Update Store</button>
+    </form>
   </div>
 
-  <% if @store.errors.any? %>
-    <div class="alert alert-danger">
-      <% @store.errors.full_messages.each do |message| %>
-        <%= message + " " %>
-      <% end %>
-    </div>
-  <% end %>
-
-  <button type="submit" class="btn">Update Store</button>
-</form>
-
-<form class="" action="/stores/<%= @store.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <button type="submit" class="btn btn-danger">Delete Store</button>
-</form>
+  <div class="col-sm-6">
+    <h3>Delete Store</h3>
+    <p>This will permanantly remove <strong><%= @store.name %></strong> from the system. Are you sure you want to continue?</p>
+    <form class="" action="/stores/<%= @store.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit" class="btn btn-danger">Delete Store</button>
+    </form>
+  </div>
+</div>
