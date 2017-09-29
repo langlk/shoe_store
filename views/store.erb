@@ -1,41 +1,48 @@
-<h2><%= @store.name %></h2>
+<div class="subpage-header">
+  <h2><%= @store.name %></h2>
+  <h5><a href="/stores/<%= @store.id %>/edit">Edit</a></h5>
+</div>
 
-<h5><a href="/stores/<%= @store.id %>/edit">Edit</a></h5>
+<div class="row">
+  <div class="col-sm-6">
+    <h3>Brands Stocked</h3>
 
-<h3>Brands Stocked</h3>
-
-<% if @store.brands.any? %>
-  <ul>
-    <% @store.brands.each do |brand| %>
-      <li>
-        <%= brand.name %> - <%= brand.price %>
-        <form class="" action="/stores/<%= @store.id %>/remove-brand/<%= brand.id %>" method="post">
-          <input type="hidden" name="_method" value="patch">
-          <button type="submit" class="btn">Remove</button>
-        </form>
-      </li>
+    <% if @store.brands.any? %>
+      <ul>
+        <% @store.brands.each do |brand| %>
+          <li>
+            <%= brand.name %> - <%= brand.price %>
+            <form class="" action="/stores/<%= @store.id %>/remove-brand/<%= brand.id %>" method="post">
+              <input type="hidden" name="_method" value="patch">
+              <button type="submit" class="btn">Remove</button>
+            </form>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No brands added to this store yet!</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>No brands added to this store yet!</p>
-<% end %>
+  </div>
 
-<h4>Add Brands to Store</h4>
+  <div class="col-sm-6">
+    <h3>Add Brands to Store</h3>
 
-<% if @unassigned_brands.any? %>
-  <form class="" action="/stores/<%= @store.id %>/add-brands" method="post">
-    <input type="hidden" name="_method" value="patch">
-    <% @unassigned_brands.each do |brand| %>
-      <div class="checkbox">
-        <label>
-          <input id='brand-<%= brand.id %>' type="checkbox" name="brand_ids[]" value="<%= brand.id %>">
-          <%= brand.name %> - <%= brand.price %>
-        </label>
-      </div>
+    <% if @unassigned_brands.any? %>
+      <form class="" action="/stores/<%= @store.id %>/add-brands" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <% @unassigned_brands.each do |brand| %>
+          <div class="checkbox">
+            <label>
+              <input id='brand-<%= brand.id %>' type="checkbox" name="brand_ids[]" value="<%= brand.id %>">
+              <%= brand.name %> - <%= brand.price %>
+            </label>
+          </div>
+        <% end %>
+
+        <button type="submit" class="btn">Add Brands</button>
+      </form>
+    <% else %>
+      <p>You'll need to save more brands in order to add them. You can do so <a href="/brands">here</a>.</p>
     <% end %>
-
-    <button type="submit" class="btn">Add Brands</button>
-  </form>
-<% else %>
-  <p>You'll need to save more brands in order to add them. You can do so <a href="/brands">here</a>.</p>
-<% end %>
+  </div>
+</div>

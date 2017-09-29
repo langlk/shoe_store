@@ -1,34 +1,43 @@
-<h2>Your Brands</h2>
+<div class="subpage-header">
+  <h2>Your Brands</h2>
+</div>
 
-<% if @brands.any? %>
-  <ul>
-    <% @brands.each do |brand| %>
-      <li><%= brand.name %> - <%= brand.price %></li>
+
+<div class="row">
+  <div class="col-sm-6">
+    <% if @brands.any? %>
+      <ul class="object-list">
+        <% @brands.each do |brand| %>
+          <li><%= brand.name %> - <%= brand.price %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>You have not added any brands yet!</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>You have not added any brands yet!</p>
-<% end %>
-
-<h3>Add a Brand</h3>
-<form class="" action="/brands/add" method="post">
-  <div class="form-group <%= @brand != nil ? 'has-error' : nil %>">
-    <label for="name" class="control-label">Brand Name</label>
-    <input type="text" name="name" class="form-control">
   </div>
 
-  <div class="form-group">
-    <label for="price" class="control-label">Price (USD)</label>
-    <input type="number" name="price" class="form-control" step="0.01" min="0.00" placeholder="0.00">
-  </div>
+  <div class="col-sm-6">
+    <h3>Add a Brand</h3>
+    <form class="" action="/brands/add" method="post">
+      <div class="form-group <%= @brand != nil ? 'has-error' : nil %>">
+        <label for="name" class="control-label">Brand Name</label>
+        <input type="text" name="name" class="form-control">
+      </div>
 
-  <% if @brand %>
-    <div class="alert alert-danger">
-      <% @brand.errors.full_messages.each do |message| %>
-        <%= message + ". " %>
+      <div class="form-group">
+        <label for="price" class="control-label">Price (USD)</label>
+        <input type="number" name="price" class="form-control" step="0.01" min="0.00" placeholder="0.00">
+      </div>
+
+      <% if @brand %>
+        <div class="alert alert-danger">
+          <% @brand.errors.full_messages.each do |message| %>
+            <%= message + ". " %>
+          <% end %>
+        </div>
       <% end %>
-    </div>
-  <% end %>
 
-  <button type="submit" class="btn">Add Brand</button>
-</form>
+      <button type="submit" class="btn">Add Brand</button>
+    </form>
+  </div>
+</div>

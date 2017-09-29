@@ -1,29 +1,37 @@
-<h2>Your Stores</h2>
+<div class="subpage-header">
+  <h2>Your Stores</h2>
+</div>
 
-<% if @stores.any? %>
-  <ul>
-    <% @stores.each do |store| %>
-      <li><a href="/stores/<%= store.id %>"><%= store.name %></a></li>
+<div class="row">
+  <div class="col-sm-6">
+    <% if @stores.any? %>
+      <ul class="object-list">
+        <% @stores.each do |store| %>
+          <li><a href="/stores/<%= store.id %>"><%= store.name %></a></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>You have not added any stores yet!</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>You have not added any stores yet!</p>
-<% end %>
-
-<h3>Add a Store</h3>
-<form class="" action="/stores/add" method="post">
-  <div class="form-group <%= @store != nil ? 'has-error' : nil %>">
-    <label for="name" class="control-label">Store Name</label>
-    <input type="text" name="name" class="form-control">
   </div>
 
-  <% if @store %>
-    <div class="alert alert-danger">
-      <% @store.errors.full_messages.each do |message| %>
-        <%= message + ". " %>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="col-sm-6">
+    <h3>Add a Store</h3>
+    <form class="" action="/stores/add" method="post">
+      <div class="form-group <%= @store != nil ? 'has-error' : nil %>">
+        <label for="name" class="control-label">Store Name</label>
+        <input type="text" name="name" class="form-control">
+      </div>
 
-  <button type="submit" class="btn">Create Store</button>
-</form>
+      <% if @store %>
+        <div class="alert alert-danger">
+          <% @store.errors.full_messages.each do |message| %>
+            <%= message + ". " %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <button type="submit" class="btn">Create Store</button>
+    </form>
+  </div>
+</div>

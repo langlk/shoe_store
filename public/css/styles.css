@@ -1,0 +1,34 @@
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Righteous', cursive;
+}
+
+.jumbotron {
+  padding-bottom: 1rem;
+}
+
+.jumbotron h1 {
+  margin-bottom: 2rem;
+}
+
+.subpage-header {
+  border-bottom: 1px solid #eee;
+}
+
+.subpage-header h2 {
+  font-size: 40px;
+  display: inline;
+}
+
+.subpage-header h5 {
+  display: inline-block;
+  margin-left: .6em;
+}
+
+.object-list {
+  margin-top: 20px;
+}
