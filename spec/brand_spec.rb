@@ -31,6 +31,12 @@ describe('Brand') do
       brand.save
       expect(brand.price).to eq('$50.00')
     end
+
+    it "saves price as $0.00 if no price is provided" do
+      brand = Brand.new({name: 'Converse'})
+      brand.save
+      expect(brand.price).to eq('$0.00')
+    end
   end
 
   describe '#stores' do
